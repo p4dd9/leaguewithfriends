@@ -28,6 +28,7 @@ function App({ Component, pageProps }: AppProps) {
 				value={{
 					refreshInterval: 10000,
 					revalidateOnFocus: false,
+					shouldRetryOnError: false,
 					fetcher: (resource, init = { header: {} }) =>
 						fetch(resource, { ...init, headers: { ...init.headers, 'X-Riot-Token': apiKey } }).then(async (res) => {
 							if (!res.ok) {
