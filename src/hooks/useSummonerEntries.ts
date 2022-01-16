@@ -1,10 +1,13 @@
 import useSWR from 'swr'
 
 interface SummonerEntries {
+	leaguePoints: number
 	rank: string
 	tier: string
 	queueType: string
 	summonerName: string
+	wins: number
+	losses: number
 }
 
 interface SummonerEntriesResponse {

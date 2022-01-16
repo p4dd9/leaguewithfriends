@@ -9,17 +9,24 @@ export interface InitialAppProps {
 	title?: string
 }
 
-const players = ['TASBOT', 'Nucle4rSunrise', 'Killerie']
+const players = [
+	'TASBOT',
+	'Nucle4rSunrise',
+	'Killerie',
+	'Salamaleikum',
+	'Insectfreak',
+	'InaJ',
+	'enjuli',
+	'El Feo Demente',
+]
 const IndexPage: NextPage<InitialAppProps> = (props: InitialAppProps) => {
-	const { title } = props
 	return (
 		<>
 			<Head>
-				<title>Index Page</title>
+				<title>{props.title}</title>
 			</Head>
-			<div>{title}</div>
 			<div>
-				<h1>PLAYER RANKS</h1>
+				<h1 style={{ margin: '8px' }}>Player Scores 5on5 RANKED </h1>
 				{players.map((player) => (
 					<PlayerCard summoner={player} key={player} />
 				))}

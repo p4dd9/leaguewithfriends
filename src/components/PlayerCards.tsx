@@ -29,8 +29,11 @@ export const PlayerCard: React.FunctionComponent<{ summoner: string }> = ({ summ
 	return (
 		<div style={{ margin: '8px' }}>
 			<span>{summoner}: </span>
-			{isLoading ? <div>Loading ...</div> : ranked5on5Stats ? ranked5on5Stats.tier : 'UNRANKED'}{' '}
-			{ranked5on5Stats ? ranked5on5Stats.rank : ''}
+			{isLoading ? <div>Loading ...</div> : <strong>{ranked5on5Stats ? ranked5on5Stats.tier : 'UNRANKED'}</strong>}{' '}
+			{ranked5on5Stats ? `${ranked5on5Stats.rank}` : ''}
+			{' <('}
+			{ranked5on5Stats ? `WINS: ${ranked5on5Stats.wins} | ` : '- | '}
+			{ranked5on5Stats ? `LOSSES: ${ranked5on5Stats.losses})>` : '-)>'}
 		</div>
 	)
 }

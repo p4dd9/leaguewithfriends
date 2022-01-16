@@ -1,9 +1,7 @@
 import React from 'react'
 import { styled } from '../styles/Theme'
 
-const StyledLayout = styled.div`
-	background-color: orange;
-`
+const StyledLayout = styled.div``
 
 interface MainLayoutProps {
 	children: React.ReactNode
