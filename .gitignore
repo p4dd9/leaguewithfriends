@@ -1,6 +1,6 @@
 # next specific
 /out/
-*.env
+.env
 .next
 
 # dependencies
