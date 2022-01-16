@@ -9,7 +9,7 @@ export interface InitialAppProps {
 	title?: string
 }
 
-const players = ['TASBOT', 'enjuli', 'Nucle4rSunrise', 'Killerie', 'InaJ', 'Insectfreak', 'Salamaleikum']
+const players = ['TASBOT', 'Nucle4rSunrise', 'Killerie']
 const IndexPage: NextPage<InitialAppProps> = (props: InitialAppProps) => {
 	const { title } = props
 	return (
