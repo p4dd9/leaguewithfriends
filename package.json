@@ -7,7 +7,7 @@
 	"scripts": {
 		"dev": "next",
 		"build": "next build",
-		"start": "next start",
+		"start": "next start -p 4600",
 		"build:analyze": "ANALYZE=true npm run build",
 		"test": "jest --watch",
 		"lint": "eslint src --ext .ts,.tsx"

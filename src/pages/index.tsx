@@ -3,12 +3,13 @@ import { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 import PageWithLayoutType from '../app/layout/PageWithLayout'
 import MainLayout from '../app/layout/Layout'
-import { HelloWorld } from '../components/HelloWorld'
+import { PlayerCard } from '../components/PlayerCards'
 
 export interface InitialAppProps {
 	title?: string
 }
 
+const players = ['TASBOT', 'enjuli', 'Nucle4rSunrise', 'Killerie', 'InaJ', 'Insectfreak', 'Salamaleikum']
 const IndexPage: NextPage<InitialAppProps> = (props: InitialAppProps) => {
 	const { title } = props
 	return (
@@ -18,7 +19,10 @@ const IndexPage: NextPage<InitialAppProps> = (props: InitialAppProps) => {
 			</Head>
 			<div>{title}</div>
 			<div>
-				<HelloWorld />
+				<h1>PLAYER RANKS</h1>
+				{players.map((player) => (
+					<PlayerCard summoner={player} key={player} />
+				))}
 			</div>
 		</>
 	)
@@ -27,7 +31,7 @@ const IndexPage: NextPage<InitialAppProps> = (props: InitialAppProps) => {
 export const getStaticProps: GetStaticProps<InitialAppProps> = async () => {
 	return {
 		props: {
-			title: 'index page staticTitleProps',
+			title: 'Dashboard',
 		},
 	}
 }

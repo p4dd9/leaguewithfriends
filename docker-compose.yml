@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  application:
+    build:
+      context: ./
+    image: "${APP_NAME}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${APP_NAME}.rule=Host(`${APP_HOST}`)"
+      - "traefik.http.routers.${APP_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${APP_NAME}.tls.certresolver=myresolver"
+    networks:
+      internal:
+    restart: always
+
+networks:
+  internal:
+    external:
+      name: "${APP_NETWORK}"
