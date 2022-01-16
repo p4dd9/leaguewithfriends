@@ -17,7 +17,7 @@ RUN npm install
 RUN npm run build
 
 # set target image directory
-WORKDIR /opt/applications/leaguewithfriends
+WORKDIR /opt/leaguewithfriends
 
 # start
 ENTRYPOINT npm run start
