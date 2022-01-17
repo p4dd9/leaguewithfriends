@@ -1,5 +1,3 @@
-import baseStyled, { ThemedStyledInterface } from 'styled-components'
-
 // References to https://blog.agney.dev/styled-components-&-typescript/
 const customMediaQuery = (minWidth: number): string => `@media (min-width: ${minWidth}px)`
 
@@ -15,7 +13,7 @@ export const theme = {
 		primary: 'red',
 		secondary: 'green',
 		blackPeral: '#050F1A',
-		veniPurple: '#231565',
+		dark: '#111111',
 		willhaben: '#049EE7',
 		decentBeton: '#E6E6E6',
 		emerald: '#50C878',
@@ -23,6 +21,16 @@ export const theme = {
 		charityPink: '#C03BE4',
 		charityBlue: '#0999F9',
 		charityTeal: '#7DF8FF',
+		iron: '#86807e',
+		silver: '#748e95',
+		bronze: '#915335',
+		gold: '#ecc368',
+		platinum: '#507a77',
+		diamond: '#a188c4',
+		master: '#bb13bd',
+		grandmaster: '#d7272b',
+		challenger: '#2dbbfe',
+		pastelred: '#eb5d5d',
 	},
 	fontSize: {
 		s: 12,
@@ -50,6 +58,4 @@ export const theme = {
 	},
 }
 
-// Stronlgy typed theme https://github.com/styled-components/styled-components/issues/1589
 export type Theme = typeof theme
-export const styled = baseStyled as ThemedStyledInterface<Theme>

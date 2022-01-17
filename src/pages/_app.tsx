@@ -26,7 +26,7 @@ function App({ Component, pageProps }: AppProps) {
 			<GlobalStyle />
 			<SWRConfig
 				value={{
-					refreshInterval: 10000,
+					refreshInterval: 0,
 					revalidateOnFocus: false,
 					shouldRetryOnError: false,
 					fetcher: (resource, init = { header: {} }) =>

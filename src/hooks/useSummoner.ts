@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-interface Summoner {
+export interface Summoner {
 	accountId: string
 	id: string
 	name: string

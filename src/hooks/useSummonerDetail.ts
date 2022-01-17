@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-interface SummonerEntries {
+export interface SummonerDetail {
 	leaguePoints: number
 	rank: string
 	tier: string
@@ -8,17 +8,18 @@ interface SummonerEntries {
 	summonerName: string
 	wins: number
 	losses: number
+	hotStreak: boolean
 }
 
-interface SummonerEntriesResponse {
-	data: SummonerEntries[] | undefined
+interface SummonerDetailResponse {
+	data: SummonerDetail[] | undefined
 	isLoading: boolean
 	isError: Error | undefined
 }
 
 /** Encrypted summoner ID retrieved from useSummoner */
-export const useSummonerEntries = (id: string): SummonerEntriesResponse => {
-	const { data, error } = useSWR<SummonerEntries[], Error>(`/api/lol/league/v4/entries/by-summoner/${id}`)
+export const useSummonerDetail = (id: string): SummonerDetailResponse => {
+	const { data, error } = useSWR<SummonerDetail[], Error>(`/api/lol/league/v4/entries/by-summoner/${id}`)
 	return {
 		data,
 		isLoading: !error && !data,
