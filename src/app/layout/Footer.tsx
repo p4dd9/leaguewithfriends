@@ -1,6 +1,5 @@
 import React from 'react'
 import { BsGithub } from 'react-icons/bs'
-import { AiFillTwitterCircle } from 'react-icons/ai'
 import styled from 'styled-components'
 
 export const Footer = () => {
@@ -8,10 +7,6 @@ export const Footer = () => {
 		<StyledFooter>
 			<a href="https://github.com/p4dd9/leaguewithfriends" rel="noreferrer" target="_blank">
 				<BsGithub size={24} />
-			</a>
-
-			<a href="https://twitter.com/p4dd9" rel="noreferrer" target="_blank">
-				<AiFillTwitterCircle size={28} />
 			</a>
 		</StyledFooter>
 	)
