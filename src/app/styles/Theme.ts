@@ -31,6 +31,8 @@ export const theme = {
 		grandmaster: '#d7272b',
 		challenger: '#2dbbfe',
 		pastelred: '#eb5d5d',
+		freshBlood: '#ff9800',
+		veteran: '#406ed5',
 	},
 	fontSize: {
 		s: 12,

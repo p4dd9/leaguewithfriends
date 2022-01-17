@@ -59,6 +59,8 @@ export interface SummonerDetail {
 	wins: number
 	losses: number
 	hotStreak: boolean
+	veteran: boolean
+	freshBlood: boolean
 }
 
 export interface Player {

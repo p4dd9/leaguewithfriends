@@ -25,7 +25,12 @@ export const PlayerCard: React.FunctionComponent<{ player: Player }> = ({ player
 
 					<SummonerProfileWrapper>
 						{summonerProfile && (
-							<SummonerProfile profile={summonerProfile} hotStreak={summonerRanked5on5Stats?.hotStreak ?? false} />
+							<SummonerProfile
+								profile={summonerProfile}
+								hotStreak={summonerRanked5on5Stats?.hotStreak ?? false}
+								freshBlood={summonerRanked5on5Stats?.freshBlood ?? false}
+								veteran={summonerRanked5on5Stats?.veteran ?? false}
+							/>
 						)}
 						{summonerRanked5on5Stats && <SummonerDetails details={summonerRanked5on5Stats} />}
 					</SummonerProfileWrapper>
