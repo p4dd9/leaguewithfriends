@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { Summoner } from '../hooks/useSummoner'
-import { AiOutlineFire, AiFillFire } from 'react-icons/ai'
+import { AiFillFire } from 'react-icons/ai'
+import { Summoner } from '../pages'
 
 interface SummonerProfile {
 	profile: Summoner

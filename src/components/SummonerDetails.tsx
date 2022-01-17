@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { SummonerDetail } from '../hooks/useSummonerDetail'
+import { SummonerDetail } from '../pages'
 
 interface SummonerDetailsProps {
 	details: SummonerDetail
