@@ -1,46 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSummoner } from '../hooks/useSummoner'
-import { useSummonerDetail } from '../hooks/useSummonerDetail'
+import { Player } from '../pages'
 import { SummonerAvatar } from './SummonerAvatar'
 import { SummonerDetails } from './SummonerDetails'
 import { SummonerProfile } from './SummonerProfile'
 
-export const PlayerCard: React.FunctionComponent<{ summoner: string }> = ({ summoner }) => {
-	const { data: summonerProfile, isLoading: isLoadingProfile, isError: isErrorSummoner } = useSummoner(summoner)
-
-	// TODO: conditionally fetch if id is given or not
-	const {
-		data: summonerEntries,
-		isLoading: isLoadingEntries,
-		isError: isErrorSummonerEntries,
-	} = useSummonerDetail(summonerProfile?.id ?? '')
-
-	// TODO: use isLoading state for skeleton loading
-	const isLoading = isLoadingProfile && isLoadingEntries
-	const isError = isErrorSummoner || isErrorSummonerEntries
-
-	// TODO: create nicer generic error component
-	if (isError) {
-		return <div>Fehler. {isError.message}</div>
-	}
-
-	// TODO: extract this logic to somewhere else
-	let ranked5on5Stats
-	if (summonerEntries) {
-		ranked5on5Stats = summonerEntries.find((el) => el.queueType === 'RANKED_SOLO_5x5')
-	}
-
-	const profileTheme = mapTierToProfileTheme((ranked5on5Stats?.tier ?? 'URANKED') as Tier)
+export const PlayerCard: React.FunctionComponent<{ player: Player }> = ({ player }) => {
+	const { summonerProfile, summonerRanked5on5Stats } = player
+	const profileTheme = mapTierToProfileTheme((summonerRanked5on5Stats?.tier ?? 'URANKED') as Tier)
 	return (
 		<OuterWrapper>
 			<Wrapper borderColor={profileTheme.color}>
 				<div style={{ display: 'flex' }}>
 					<a
-						href={`https://euw.op.gg/summoner/userName=${summoner}`}
+						href={`https://euw.op.gg/summoner/userName=${player.summonerProfile.name}`}
 						target="_blank"
 						rel="noreferrer"
-						title={`https://euw.op.gg/summoner/userName=${summoner}`}
+						title={`https://euw.op.gg/summoner/userName=${player.summonerProfile.name}`}
 					>
 						{summonerProfile && (
 							<SummonerAvatar level={summonerProfile.summonerLevel} profileIconId={summonerProfile.profileIconId} />
@@ -49,9 +25,9 @@ export const PlayerCard: React.FunctionComponent<{ summoner: string }> = ({ summ
 
 					<SummonerProfileWrapper>
 						{summonerProfile && (
-							<SummonerProfile profile={summonerProfile} hotStreak={ranked5on5Stats?.hotStreak ?? false} />
+							<SummonerProfile profile={summonerProfile} hotStreak={summonerRanked5on5Stats?.hotStreak ?? false} />
 						)}
-						{ranked5on5Stats && <SummonerDetails details={ranked5on5Stats} />}
+						{summonerRanked5on5Stats && <SummonerDetails details={summonerRanked5on5Stats} />}
 					</SummonerProfileWrapper>
 				</div>
 				<SummonerAvatarBorder imageUrl={profileTheme.emblem} />

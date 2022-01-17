@@ -7,12 +7,4 @@ module.exports = withBundleAnalyzer({
 		styledComponents: true,
 		exclude: ['error'],
 	},
-	async rewrites() {
-		return [
-			{
-				source: '/api/:path*',
-				destination: 'https://euw1.api.riotgames.com/:path*',
-			},
-		]
-	},
 })

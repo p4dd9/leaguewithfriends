@@ -1,29 +1,18 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
+import { Player } from '../pages'
 import { PlayerCard } from './PlayerCard'
 
-const players = [
-	'TASBOT',
-	'Nucle4rSunrise',
-	'Killerie',
-	'Salamaleikum',
-	'Stoned Weaver',
-	'cibo',
-	'Insectfreak',
-	'InaJ',
-	'enjuli',
-	'El Feo Demente',
-	'Netxus',
-	'Worufy',
-	'Zeroxter',
-	'Lydina',
-]
-export const ScoreBoard = () => {
+interface ScoreboardProps {
+	players: Player[]
+}
+
+export const ScoreBoard: FunctionComponent<ScoreboardProps> = ({ players }: ScoreboardProps) => {
 	return (
 		<Wrapper>
-			<Title>Scoreboard 5on5 RANKED </Title>
+			<Title>League With Friends</Title>
 			{players.map((player) => (
-				<PlayerCard summoner={player} key={player} />
+				<PlayerCard player={player} key={player.summonerProfile.accountId} />
 			))}
 		</Wrapper>
 	)

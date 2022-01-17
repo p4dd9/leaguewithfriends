@@ -16,7 +16,7 @@ interface ApiError extends Error {
 	status: number
 }
 
-const apiKey = process.env.NEXT_PUBLIC_RIOT_GAMES_API_KEY || 'API_KEY_MISSING'
+export const apiKey = process.env.NEXT_PUBLIC_RIOT_GAMES_API_KEY || 'API_KEY_MISSING'
 function App({ Component, pageProps }: AppProps) {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const Layout = (Component as any).layout ? (Component as any).layout : React.Fragment
@@ -32,7 +32,10 @@ function App({ Component, pageProps }: AppProps) {
 					fetcher: (resource, init = { header: {} }) =>
 						fetch(resource, { ...init, headers: { ...init.headers, 'X-Riot-Token': apiKey } }).then(async (res) => {
 							if (!res.ok) {
-								const error = new Error('An error occurred while fetching the data.') as ApiError
+								if (res.status === 429) {
+									throw new Error('Shit. Rate-Limit reached. Please try again later.') as ApiError
+								}
+								const error = new Error('Something failed while fetching data.') as ApiError
 								error.info = await res.json()
 								error.status = res.status
 								throw error
