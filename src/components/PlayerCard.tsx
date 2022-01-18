@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Player } from '../pages'
+import { ExtendedPlayer } from '../pages'
 import { SummonerAvatar } from './SummonerAvatar'
 import { SummonerDetails } from './SummonerDetails'
 import { SummonerProfile } from './SummonerProfile'
 
-export const PlayerCard: React.FunctionComponent<{ player: Player }> = ({ player }) => {
-	const { summonerProfile, summonerRanked5on5Stats } = player
-	const profileTheme = mapTierToProfileTheme((summonerRanked5on5Stats?.tier ?? 'URANKED') as Tier)
+export const PlayerCard: React.FunctionComponent<{ player: ExtendedPlayer }> = ({ player }) => {
+	const { summonerProfile, summonerRanked5on5Stats, theme } = player
+
 	return (
 		<OuterWrapper>
-			<Wrapper borderColor={profileTheme.color}>
+			<Wrapper borderColor={theme.color}>
 				<div style={{ display: 'flex' }}>
 					<a
 						href={`https://euw.op.gg/summoner/userName=${player.summonerProfile.name}`}
@@ -35,13 +35,13 @@ export const PlayerCard: React.FunctionComponent<{ player: Player }> = ({ player
 						{summonerRanked5on5Stats && <SummonerDetails details={summonerRanked5on5Stats} />}
 					</SummonerProfileWrapper>
 				</div>
-				<SummonerAvatarBorder imageUrl={profileTheme.emblem} />
+				<SummonerAvatarBorder imageUrl={theme.emblem} />
 			</Wrapper>
 		</OuterWrapper>
 	)
 }
 
-type Tier =
+export type Tier =
 	| 'IRON'
 	| 'BRONZE'
 	| 'SILVER'
@@ -52,43 +52,6 @@ type Tier =
 	| 'GRANDMASTER'
 	| 'CHALLENGER'
 	| 'URANKED'
-
-const mapTierToProfileTheme = (tier: Tier) => {
-	switch (tier) {
-		case 'IRON': {
-			// TODO: read color from theme
-			return { emblem: '/emblems/Emblem_Iron.png', color: '#86807e' }
-		}
-		case 'BRONZE': {
-			return { emblem: '/emblems/Emblem_Bronze.png', color: '#915335' }
-		}
-		case 'SILVER': {
-			return { emblem: '/emblems/Emblem_Silver.png', color: '#748e95' }
-		}
-		case 'GOLD': {
-			return { emblem: '/emblems/Emblem_Gold.png', color: '#ecc368' }
-		}
-		case 'PLATINUM': {
-			return { emblem: '/emblems/Emblem_Platinum.png', color: '#507a77' }
-		}
-		case 'DIAMOND': {
-			return { emblem: '/emblems/Emblem_Diamond.png', color: '#a188c4' }
-		}
-		case 'MASTER': {
-			return { emblem: '/emblems/Emblem_Master.png', color: '#bb13bd' }
-		}
-		case 'GRANDMASTER': {
-			return { emblem: '/emblems/Emblem_Grandmaster.png', color: '#d7272b' }
-		}
-		case 'CHALLENGER': {
-			return { emblem: '/emblems/Emblem_Challenger.png', color: '#2dbbfe' }
-		}
-		default: {
-			// TODO: find better fallback for UNRANKED profile theme
-			return { emblem: 'URANKED', color: '#86807e' }
-		}
-	}
-}
 
 const OuterWrapper = styled.div`
 	a {

@@ -5,10 +5,12 @@ import PageWithLayoutType from '../app/layout/PageWithLayout'
 import MainLayout from '../app/layout/Layout'
 import { ScoreBoard } from '../components/Scoreboard'
 import { apiKey } from './_app'
+import { mapTierToProfileTheme } from '../lib/utils'
+import { Tier } from '../components/PlayerCard'
 
 export interface InitialAppProps {
 	title?: string
-	players: Player[]
+	players: ExtendedPlayer[]
 }
 
 const IndexPage: NextPage<InitialAppProps> = (props: InitialAppProps) => {
@@ -68,9 +70,19 @@ export interface Player {
 	summonerRanked5on5Stats: SummonerDetail | null
 }
 
+interface PlayerTheme {
+	emblem: string
+	color: string
+	score: number
+}
+
+export interface ExtendedPlayer extends Player {
+	theme: PlayerTheme
+}
+
 const requestThrottle = 100
 export const getStaticProps: GetStaticProps<InitialAppProps> = async () => {
-	const players = [] as Player[]
+	const players = [] as ExtendedPlayer[]
 
 	for (let i = 0; i < playersDB.length; i++) {
 		const summonerDataResponse = await fetch(
@@ -105,7 +117,16 @@ export const getStaticProps: GetStaticProps<InitialAppProps> = async () => {
 		*/
 		await new Promise((resolve) => setTimeout(() => resolve(true), requestThrottle))
 
-		players.push({ summonerProfile: summonerData, summonerRanked5on5Stats: summonerRanked5on5Stats } as Player)
+		const profileTheme = mapTierToProfileTheme(
+			(summonerRanked5on5Stats?.tier ?? 'URANKED') as Tier,
+			summonerRanked5on5Stats?.leaguePoints ?? 0
+		)
+
+		players.push({
+			summonerProfile: summonerData,
+			summonerRanked5on5Stats: summonerRanked5on5Stats,
+			theme: profileTheme,
+		} as ExtendedPlayer)
 	}
 
 	return {

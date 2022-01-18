@@ -1,17 +1,18 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { Player } from '../pages'
+import { ExtendedPlayer } from '../pages'
 import { PlayerCard } from './PlayerCard'
 
 interface ScoreboardProps {
-	players: Player[]
+	players: ExtendedPlayer[]
 }
 
 export const ScoreBoard: FunctionComponent<ScoreboardProps> = ({ players }: ScoreboardProps) => {
+	const extendedPlayers = players.sort((a, b) => (a.theme.score < b.theme.score ? 1 : -1))
 	return (
 		<Wrapper>
 			<Title>League With Friends</Title>
-			{players.map((player) => (
+			{extendedPlayers.map((player) => (
 				<PlayerCard player={player} key={player.summonerProfile.accountId} />
 			))}
 		</Wrapper>
