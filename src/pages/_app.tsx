@@ -45,11 +45,7 @@ function App({ Component, pageProps }: AppProps) {
 				}}
 			>
 				<ThemeProvider theme={theme}>
-					{/**
-					 * Produces the following warnings:
-					 * Warning: Invalid prop `statusCode` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.
-					 */}
-					<Layout {...pageProps}>
+					<Layout>
 						<Component {...pageProps} />
 					</Layout>
 				</ThemeProvider>
