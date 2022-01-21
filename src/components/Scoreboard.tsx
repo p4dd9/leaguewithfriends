@@ -8,7 +8,6 @@ interface ScoreboardProps {
 }
 
 export const ScoreBoard: FunctionComponent<ScoreboardProps> = ({ players }: ScoreboardProps) => {
-	console.log(players)
 	const stortedPlayers = players.sort((a, b) => (a.theme.score < b.theme.score ? 1 : -1))
 	return (
 		<Wrapper>
