@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { AiFillFire } from 'react-icons/ai'
 import { FaMedal } from 'react-icons/fa'
 import { MdBloodtype } from 'react-icons/md'
-import { Summoner } from '../pages'
+import { Summoner } from '../lib/leagueApiClient'
 
 interface SummonerProfile {
 	profile: Summoner

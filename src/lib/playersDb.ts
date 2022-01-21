@@ -1,0 +1,16 @@
+export const playersDB = [
+	'TASBOT',
+	'Nucle4rSunrise',
+	'Killerie',
+	'Salamaleikum',
+	'Stoned Weaver',
+	'cibo',
+	'Insectfreak',
+	'InaJ',
+	'enjuli',
+	'El Feo Demente',
+	'Netxus',
+	'Worufy',
+	'Zeroxter',
+	'Lydina',
+]

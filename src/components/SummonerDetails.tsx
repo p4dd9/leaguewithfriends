@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { SummonerDetail } from '../pages'
+import { SummonerDetail } from '../lib/leagueApiClient'
 
 interface SummonerDetailsProps {
 	details: SummonerDetail

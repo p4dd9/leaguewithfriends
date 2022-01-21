@@ -1,32 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ExtendedPlayer } from '../pages'
+import { ExtendedPlayer } from '../lib/leagueApiClient'
 import { SummonerAvatar } from './SummonerAvatar'
 import { SummonerDetails } from './SummonerDetails'
 import { SummonerProfile } from './SummonerProfile'
 
 export const PlayerCard: React.FunctionComponent<{ player: ExtendedPlayer }> = ({ player }) => {
-	const { summonerProfile, summonerRanked5on5Stats, theme } = player
+	const { summoner, summonerRanked5on5Stats, theme } = player
 
 	return (
 		<OuterWrapper>
 			<Wrapper borderColor={theme.color}>
 				<div style={{ display: 'flex' }}>
 					<a
-						href={`https://euw.op.gg/summoner/userName=${player.summonerProfile.name}`}
+						href={`https://euw.op.gg/summoner/userName=${player.summoner.name}`}
 						target="_blank"
 						rel="noreferrer"
-						title={`https://euw.op.gg/summoner/userName=${player.summonerProfile.name}`}
+						title={`https://euw.op.gg/summoner/userName=${player.summoner.name}`}
 					>
-						{summonerProfile && (
-							<SummonerAvatar level={summonerProfile.summonerLevel} profileIconId={summonerProfile.profileIconId} />
-						)}
+						{summoner && <SummonerAvatar level={summoner.summonerLevel} profileIconId={summoner.profileIconId} />}
 					</a>
 
 					<SummonerProfileWrapper>
-						{summonerProfile && (
+						{summoner && (
 							<SummonerProfile
-								profile={summonerProfile}
+								profile={summoner}
 								hotStreak={summonerRanked5on5Stats?.hotStreak ?? false}
 								freshBlood={summonerRanked5on5Stats?.freshBlood ?? false}
 								veteran={summonerRanked5on5Stats?.veteran ?? false}

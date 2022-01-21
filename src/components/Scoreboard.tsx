@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { ExtendedPlayer } from '../pages'
+import { ExtendedPlayer } from '../lib/leagueApiClient'
 import { PlayerCard } from './PlayerCard'
 
 interface ScoreboardProps {
@@ -8,12 +8,13 @@ interface ScoreboardProps {
 }
 
 export const ScoreBoard: FunctionComponent<ScoreboardProps> = ({ players }: ScoreboardProps) => {
-	const extendedPlayers = players.sort((a, b) => (a.theme.score < b.theme.score ? 1 : -1))
+	console.log(players)
+	const stortedPlayers = players.sort((a, b) => (a.theme.score < b.theme.score ? 1 : -1))
 	return (
 		<Wrapper>
 			<Title>League With Friends</Title>
-			{extendedPlayers.map((player) => (
-				<PlayerCard player={player} key={player.summonerProfile.accountId} />
+			{stortedPlayers.map((player) => (
+				<PlayerCard player={player} key={player.summoner.accountId} />
 			))}
 		</Wrapper>
 	)
