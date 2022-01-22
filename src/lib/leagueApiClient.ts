@@ -1,4 +1,4 @@
-export const apiKey = process.env.NEXT_PUBLIC_RIOT_GAMES_API_KEY || 'API_KEY_MISSING'
+export const apiKey = process.env.RIOT_GAMES_API_KEY || 'API_KEY_MISSING'
 
 // TODO: add matchIds query
 // https://developer.riotgames.com/apis#match-v5/
