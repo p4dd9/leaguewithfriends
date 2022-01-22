@@ -2,10 +2,6 @@
 
 [https://leaguewithfriends.redcouch.at](https://leaguewithfriends.redcouch.at/)
 
-# Riot Games API
-
-To comply with CORS policy any call starting with `/api/:path*` are proxied to Riot Games API.
-
 # ENV variables
 
 **Required**  
