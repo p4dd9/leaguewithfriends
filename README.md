@@ -2,6 +2,10 @@
 
 [https://leaguewithfriends.redcouch.at](https://leaguewithfriends.redcouch.at/)
 
+Fetching data is throttled due to API restriction by Riot Games.  
+`20 requests every 1 seconds`  
+`100 requests every 2 minutes`
+
 # ENV variables
 
 **Required**  
