@@ -14,4 +14,4 @@ Fetching data is throttled due to API restriction by Riot Games.
 **For Deployment using Traefik**  
 `APP_NAME=` Application's name used high level labeling such as Docker image and traefik routing label  
 `APP_HOST=` The application's host e.g. thebestdomainnameicouldcomeupwith.com  
-`APP_NETWORK` Your internal docker network used for backend communication (optional)
+`APP_NETWORK=` Your internal docker network used for backend communication (optional)
