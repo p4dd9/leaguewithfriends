@@ -7,13 +7,12 @@ interface SummonerDetailsProps {
 
 export const SummonerDetails: FunctionComponent<SummonerDetailsProps> = ({ details }: SummonerDetailsProps) => {
 	const { rank, tier, wins, losses, leaguePoints } = details
+	const gamesCount = wins + losses
+	const winRate = Math.round((wins / gamesCount) * 100)
 
-	const winRate = Math.round((wins / (wins + losses)) * 100)
 	return (
 		<div>
-			<div>
-				{tier} {rank}, {leaguePoints}LP, W: {wins}, L: {losses}, WR: {winRate}%
-			</div>
+			{tier} {rank}, {leaguePoints}LP, Games: {gamesCount}, Wins: {wins}, Losses: {losses}, Winrate: {winRate}%
 		</div>
 	)
 }
