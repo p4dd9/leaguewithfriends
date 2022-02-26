@@ -33,7 +33,7 @@ export const PlayerCard: React.FunctionComponent<{ player: ExtendedPlayer }> = (
 						{summonerRanked5on5Stats && <SummonerDetails details={summonerRanked5on5Stats} />}
 					</SummonerProfileWrapper>
 				</div>
-				<SummonerAvatarBorder imageUrl={theme.emblem} />
+				<SummonerAvatarBorder imageUrl={theme.image} />
 			</Wrapper>
 		</OuterWrapper>
 	)

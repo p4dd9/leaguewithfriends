@@ -106,7 +106,7 @@ export interface Player {
 }
 
 interface PlayerTheme {
-	emblem: string
+	image: string
 	color: string
 	score: number
 }

@@ -1,6 +1,7 @@
 import { Tier } from '../components/PlayerCard'
 import { ExtendedPlayer, getEntries, getSummoner, Rank, Summoner, SummonerDetail } from './leagueApiClient'
 import { playersDB } from './playersDb'
+import { theme } from '../app/styles/Theme'
 
 export const getPlayers = async () => {
 	const players = [] as ExtendedPlayer[]
@@ -32,7 +33,7 @@ const getPlayer = async (summoner: Summoner) => {
 
 export const mapToTheme = (summonerRanked5on5Stats?: SummonerDetail | null) => {
 	if (!summonerRanked5on5Stats) {
-		return { emblem: 'URANKED', color: '#86807e', score: 0 }
+		return { ...theme.tier.unranked }
 	}
 
 	const tier = (summonerRanked5on5Stats?.tier ?? 'URANKED') as Tier
@@ -41,36 +42,34 @@ export const mapToTheme = (summonerRanked5on5Stats?: SummonerDetail | null) => {
 
 	switch (tier) {
 		case 'IRON': {
-			// TODO: read color from theme
-			return { emblem: '/emblems/Emblem_Iron.png', color: '#86807e', score: 0 + leaguePoints + rank }
+			return { ...theme.tier.iron, score: theme.tier.iron.score + leaguePoints + rank }
 		}
 		case 'BRONZE': {
-			return { emblem: '/emblems/Emblem_Bronze.png', color: '#915335', score: 1000 + leaguePoints + rank }
+			return { ...theme.tier.bronze, score: theme.tier.bronze.score + leaguePoints + rank }
 		}
 		case 'SILVER': {
-			return { emblem: '/emblems/Emblem_Silver.png', color: '#748e95', score: 2000 + leaguePoints + rank }
+			return { ...theme.tier.silver, score: theme.tier.silver.score + leaguePoints + rank }
 		}
 		case 'GOLD': {
-			return { emblem: '/emblems/Emblem_Gold.png', color: '#ecc368', score: 3000 + leaguePoints + rank }
+			return { ...theme.tier.gold, score: theme.tier.gold.score + leaguePoints + rank }
 		}
 		case 'PLATINUM': {
-			return { emblem: '/emblems/Emblem_Platinum.png', color: '#507a77', score: 4000 + leaguePoints + rank }
+			return { ...theme.tier.platinum, score: theme.tier.platinum.score + leaguePoints + rank }
 		}
 		case 'DIAMOND': {
-			return { emblem: '/emblems/Emblem_Diamond.png', color: '#a188c4', score: 5000 + leaguePoints + rank }
+			return { ...theme.tier.diamond, score: theme.tier.diamond.score + leaguePoints + rank }
 		}
 		case 'MASTER': {
-			return { emblem: '/emblems/Emblem_Master.png', color: '#bb13bd', score: 6000 + leaguePoints + rank }
+			return { ...theme.tier.master, score: theme.tier.master.score + leaguePoints + rank }
 		}
 		case 'GRANDMASTER': {
-			return { emblem: '/emblems/Emblem_Grandmaster.png', color: '#d7272b', score: 7000 + leaguePoints + rank }
+			return { ...theme.tier.grandmaster, score: theme.tier.grandmaster.score + leaguePoints + rank }
 		}
 		case 'CHALLENGER': {
-			return { emblem: '/emblems/Emblem_Challenger.png', color: '#2dbbfe', score: 8000 + leaguePoints + rank }
+			return { ...theme.tier.challenger, score: theme.tier.challenger.score + leaguePoints + rank }
 		}
 		default: {
-			// TODO: find better fallback for UNRANKED profile theme
-			return { emblem: 'URANKED', color: '#86807e', score: 0 }
+			return { ...theme.tier.unranked }
 		}
 	}
 }
