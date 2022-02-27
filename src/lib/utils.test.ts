@@ -1,4 +1,5 @@
 import { mapRankToPoints, filterRankedSolo5x5 } from './utils'
+import { summonerDetailmock1, summonerDetailmock2 } from './mocks'
 
 describe('::: utils.ts :::', () => {
 	it('mapRankToPoints: with valid ranks', () => {
@@ -15,6 +16,8 @@ describe('::: utils.ts :::', () => {
 	})
 
 	it('filterRankedSolo5x5: with entries', () => {
-		// TODO: add missing tests with filters of entries
+		expect(filterRankedSolo5x5([summonerDetailmock1])).toBe(summonerDetailmock1)
+		expect(filterRankedSolo5x5([summonerDetailmock1, summonerDetailmock2])).toBe(summonerDetailmock1)
+		expect(filterRankedSolo5x5([summonerDetailmock2])).toBe(null)
 	})
 })
